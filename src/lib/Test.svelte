@@ -59,7 +59,7 @@
     $: if (url) downloadImage(url)
   </script>
   
- 
+ <h1 class="font-bold text-3xl">hi</h1>
         <input
           type="file"
           id="single"

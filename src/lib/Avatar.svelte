@@ -60,24 +60,14 @@
     $: if (url) downloadImage(url)
   </script>
   
-  <div style="width: {size}px" aria-live="polite">
-    {#if avatarUrl} <img src={avatarUrl} alt={avatarUrl ? 'Avatar' : 'No image'} class="avatar image"
-    style="height: {size}px, width: {size}px" /> {:else}
-    <div class="avatar no-image" style="height: {size}px, width: {size}px" />
-    {/if}
-    <div style="width: {size}px">
-      <label class="button primary block" for="single">
-        {uploading ? 'Uploading ...' : 'Upload avatar'}
-      </label>
-      <span style="display:none">
+ 
         <input
           type="file"
           id="single"
+          placeholder="Choose"
           accept="image/*"
           bind:files
           on:change="{uploadAvatar}"
           disabled="{uploading}"
         />
-      </span>
-    </div>
-  </div>
+     
