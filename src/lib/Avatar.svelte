@@ -2,7 +2,6 @@
     import { createEventDispatcher } from 'svelte'
     import { supabase } from '../supabaseClient'
   
-    export let size: number
     export let url: string
   
     let avatarUrl: string = null
@@ -59,15 +58,26 @@
   
     $: if (url) downloadImage(url)
   </script>
-  
+  <div class="container m-6">
+    <h1 class="font-bold text-2xl mb-2">Add image</h1>
+
+    <div class="form-control w-full max-w-xs">
  
-        <input
-          type="file"
-          id="single"
-          placeholder="Choose"
-          accept="image/*"
-          bind:files
-          on:change="{uploadAvatar}"
-          disabled="{uploading}"
-        />
+     
+     <input
+           type="file"
+           id="single"
+           class="file-input file-input-bordered w-full max-w-xs file-input-primary"
+           accept="image/*"
+           bind:files
+           on:change="{uploadAvatar}"
+           disabled="{uploading}"
+         />
+    
+   </div>
+  </div>
+  
+
+ 
+        
      

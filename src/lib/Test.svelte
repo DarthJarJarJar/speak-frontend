@@ -58,14 +58,22 @@
   
     $: if (url) downloadImage(url)
   </script>
+
+  <div class="container m-6">
   
- <h1 class="font-bold text-3xl">hi</h1>
-        <input
-          type="file"
-          id="single"
-          accept=".mp3,audio/*"
-          bind:files
-          on:change="{uploadAvatar}"
-          disabled="{uploading}"
-        />
-     
+    <h1 class="font-bold text-2xl mb-2">Add audio</h1>
+    <div class="form-control w-full max-w-xs">
+   
+       
+     <input
+           type="file"
+           id="single"
+           class="file-input file-input-bordered file-input-primary w-full max-w-xs"
+           accept=".mp3,audio/*"
+           bind:files
+           on:change="{uploadAvatar}"
+           disabled="{uploading}"
+         />
+    
+   </div>
+  </div>

@@ -43,21 +43,25 @@
   </script>
   
   <form on:submit|preventDefault={updateProfile} class="form-widget">
-    <div>Email: {session.user.email}</div>
-    <div>
-      <label for="username">Name</label>
-      <input id="username" type="text" bind:value={username} />
+    <!-- <div>Email: {session.user.email}</div> -->
+    <div class="m-6">
+      <input type="text" placeholder="Word" class="input input-bordered input-primary w-full max-w-xs" bind:value={username}  />
+
     </div>
     
-    <Avatar bind:url="{avatarUrl}" size="{150}"  />
+    <Avatar bind:url="{avatarUrl}"  />
     <Test bind:url="{avatarUrl2}" />
-   
-    <div>
-      <button type="submit" class="button primary block" disabled={loading}>
-        {loading ? 'Saving ...' : 'Update profile'}
+
+    <div class="container m-6">
+      <div>
+        <button type="submit" class="btn primary block mb-2" disabled={loading}>
+          {loading ? 'Saving ...' : 'Update profile'}
+        </button>
+      </div>
+      <button type="button" class="btn block" on:click={() => supabase.auth.signOut()}>
+        Sign Out
       </button>
     </div>
-    <button type="button" class="button block" on:click={() => supabase.auth.signOut()}>
-      Sign Out
-    </button>
+   
+    
   </form>
