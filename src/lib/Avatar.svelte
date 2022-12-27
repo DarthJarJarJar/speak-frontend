@@ -67,7 +67,7 @@
      <input
            type="file"
            id="single"
-           class="file-input file-input-bordered w-full max-w-xs file-input-primary"
+           class="file-input file-input-borderedmax-w-xs file-input-primary"
            accept="image/*"
            bind:files
            on:change="{uploadAvatar}"

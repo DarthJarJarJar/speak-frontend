@@ -25,8 +25,8 @@
     },
           body: JSON.stringify({
             title: username,
-            audio: avatarUrl2,
-            image: avatarUrl
+            audio: `https://wososvlspzslampucduh.supabase.co/storage/v1/object/public/avatars/${avatarUrl2}`,
+            image: `https://wososvlspzslampucduh.supabase.co/storage/v1/object/public/avatars/${avatarUrl}`
           })
         })
         const json = await res.json()
@@ -41,11 +41,14 @@
       }
     }
   </script>
+  <div class="navbar text-primary-content">
+    <h1 class="btn btn-ghost normal-case text-4xl ml-auto mr-auto">Add a Word</h1>
+  </div>
   
-  <form on:submit|preventDefault={updateProfile} class="form-widget">
+  <form on:submit|preventDefault={updateProfile} class="form-widget w-fit ml-auto mr-auto mt-16">
     <!-- <div>Email: {session.user.email}</div> -->
     <div class="m-6">
-      <input type="text" placeholder="Word" class="input input-bordered input-primary w-full max-w-xs" bind:value={username}  />
+      <input type="text" placeholder="Enter word" class="input input-bordered input-primary max-w-xs w-full" bind:value={username}  />
 
     </div>
     
@@ -55,7 +58,7 @@
     <div class="container m-6">
       <div>
         <button type="submit" class="btn primary block mb-2" disabled={loading}>
-          {loading ? 'Saving ...' : 'Update profile'}
+          {loading ? 'Adding ...' : 'Add Word'}
         </button>
       </div>
       <button type="button" class="btn block" on:click={() => supabase.auth.signOut()}>

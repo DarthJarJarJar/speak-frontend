@@ -68,7 +68,7 @@
      <input
            type="file"
            id="single"
-           class="file-input file-input-bordered file-input-primary w-full max-w-xs"
+           class="file-input file-input-bordered file-input-primary max-w-xs"
            accept=".mp3,audio/*"
            bind:files
            on:change="{uploadAvatar}"
