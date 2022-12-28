@@ -1,28 +1,55 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import Category from "./Category.svelte";
+  import CategoryCard from "./CategoryCard.svelte";
+  import Word from "./Word.svelte";
 
 
     interface Word {
+        id: number
         title: string,
         audio: string,
         image: string
     }
 
+    interface Category {
+        id: number,
+        name: string,
+        audio: string,
+        thumbnail: string,
+        words: Word[]
+    }
+
     let words: Word[]
+    let categories: Category[]
+    let audio;
+
 
     onMount(async() => {
-        const res = await fetch('http://localhost:3000', {
+        const res = await fetch('http://localhost:3000/category', {
             method: "GET",
         })
 
-        const data: Word[] = await res.json()
-        words = data
+        const data: Category[] = await res.json()
+        categories = data
     })
 
 </script>
-{#if words}
-{#each words as word}
-    <img src={word.image} alt={word.title} class="w-20">
-    <p>{word.title}</p>
-{/each}
-{/if}
+<div class="gr">
+    {#if categories}
+    {#each categories as category (category)}
+        <CategoryCard {category} />
+    {/each}
+    {/if}
+    
+</div>
+
+<style>
+    /* .gr {
+        display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(384px, 1fr));
+		grid-column-gap: 0.3rem;
+		grid-row-gap: 0.3rem;
+		height: 20vh;
+    } */
+</style>

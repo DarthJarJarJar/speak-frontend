@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import type { AuthSession } from "@supabase/supabase-js";
     import { supabase } from "../supabaseClient";
     import Avatar from './Avatar.svelte'
@@ -8,26 +7,24 @@
     export let session: AuthSession;
   
     let loading = false
-    let username: string | null = null
-    let avatarUrl: string | null = null
-    let avatarUrl2: string | null = null
-    let category: string | null = null
+    let name: string | null = null
+    let imageUrl: string | null = null
+    let audioUrl: string | null = null
   
   
     const updateProfile = async () => {
       try {
         loading = true
-        const res = await fetch('http://localhost:3000/word' , {
+        const res = await fetch('http://localhost:3000/category' , {
           method: "POST",
           headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
     },
           body: JSON.stringify({
-            title: username,
-            audio: `https://wososvlspzslampucduh.supabase.co/storage/v1/object/public/avatars/${avatarUrl2}`,
-            image: `https://wososvlspzslampucduh.supabase.co/storage/v1/object/public/avatars/${avatarUrl}`,
-            catID: +category
+            name: name,
+            audio: `https://wososvlspzslampucduh.supabase.co/storage/v1/object/public/avatars/${audioUrl}`,
+            thumbnail: `https://wososvlspzslampucduh.supabase.co/storage/v1/object/public/avatars/${imageUrl}`,
           })
         })
         const json = await res.json()
@@ -43,22 +40,18 @@
     }
   </script>
   <div class="navbar text-primary-content">
-    <h1 class="btn btn-ghost normal-case text-4xl ml-auto mr-auto">Add a Word</h1>
+    <h1 class="btn btn-ghost normal-case text-4xl ml-auto mr-auto">Add a Category</h1>
   </div>
   
   <form on:submit|preventDefault={updateProfile} class="form-widget w-fit ml-auto mr-auto mt-8">
     <!-- <div>Email: {session.user.email}</div> -->
     <div class="m-6">
-      <input type="text" placeholder="Enter word" class="input input-bordered input-primary max-w-xs w-full" bind:value={username}  />
-      
-    </div>
-    <div class="m-6">
-      <input type="text" placeholder="Enter category ID" class="input input-bordered input-primary max-w-xs w-full" bind:value={category}  />
+      <input type="text" placeholder="Enter word" class="input input-bordered input-primary max-w-xs w-full" bind:value={name}  />
       
     </div>
     
-    <Avatar bind:url="{avatarUrl}"  />
-    <Test bind:url="{avatarUrl2}" />
+    <Avatar bind:url="{imageUrl}"  />
+    <Test bind:url="{audioUrl}" />
 
     <div class="container m-6">
       <div>
