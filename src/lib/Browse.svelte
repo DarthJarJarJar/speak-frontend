@@ -26,7 +26,7 @@
 
 
     onMount(async() => {
-        const res = await fetch('http://localhost:3000/category', {
+        const res = await fetch('https://speak-api.fly.dev/category', {
             method: "GET",
         })
 

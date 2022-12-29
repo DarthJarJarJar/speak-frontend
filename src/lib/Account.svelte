@@ -15,7 +15,7 @@
     const updateProfile = async () => {
       try {
         loading = true
-        const res = await fetch('http://localhost:3000/word' , {
+        const res = await fetch('https://speak-api.fly.dev/word' , {
           method: "POST",
           headers: {
       'Content-Type': 'application/json',

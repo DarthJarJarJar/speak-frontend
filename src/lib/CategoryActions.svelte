@@ -35,7 +35,7 @@
         console.log(extractFileNameFromUrl(category.thumbnail))
         console.log(extractFileNameFromUrl(category.audio))
 
-        const res = await fetch(`http://localhost:3000/category/${category.id}`, {
+        const res = await fetch(`https://speak-api.fly.dev/category/${category.id}`, {
               method: "PUT",
               headers: {
                   "Content-Type": "application/json"
@@ -57,7 +57,7 @@
       async function deleteFunction() {
         await supabase.storage.from('avatars').remove([extractFileNameFromUrl(category.audio), extractFileNameFromUrl(category.thumbnail)])
 
-          const res = await fetch(`http://localhost:3000/category/${category.id}`, {
+          const res = await fetch(`https://speak-api.fly.dev/category/${category.id}`, {
               method: "DELETE"
           })
   
