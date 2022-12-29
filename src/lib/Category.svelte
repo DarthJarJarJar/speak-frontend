@@ -1,10 +1,9 @@
 <script lang="ts">
     import type { AuthSession } from "@supabase/supabase-js";
     import { supabase } from "../supabaseClient";
-    import Avatar from './Avatar.svelte'
-    import Test from './Test.svelte'
+    import ImageUpload from './ImageUpload.svelte'
+    import AudioUpload from './AudioUpload.svelte'
   
-    export let session: AuthSession;
   
     let loading = false
     let name: string | null = null
@@ -50,13 +49,13 @@
       
     </div>
     
-    <Avatar bind:url="{imageUrl}"  />
-    <Test bind:url="{audioUrl}" />
+    <ImageUpload bind:url="{imageUrl}"  />
+    <AudioUpload bind:url="{audioUrl}" />
 
     <div class="container m-6">
       <div>
         <button type="submit" class="btn primary block mb-2" disabled={loading}>
-          {loading ? 'Adding ...' : 'Add Word'}
+          {loading ? 'Adding ...' : 'Add Category'}
         </button>
       </div>
       <button type="button" class="btn block" on:click={() => supabase.auth.signOut()}>

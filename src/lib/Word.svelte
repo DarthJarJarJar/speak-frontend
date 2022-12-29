@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Test from './Test.svelte'
-    import Avatar from './Avatar.svelte'
+    import AudioUpload from './AudioUpload.svelte'
+    import ImageUpload from './ImageUpload.svelte'
   import WordActions from './WordActions.svelte';
 
      interface Word {

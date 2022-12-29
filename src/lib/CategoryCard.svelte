@@ -1,5 +1,6 @@
 <script lang="ts">
   import Category from "./Category.svelte";
+  import CategoryActions from "./CategoryActions.svelte";
   import WordActions from "./WordActions.svelte"
 
 
@@ -40,13 +41,16 @@
   <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box w-3/4 ml-auto mr-auto mt-4 mb-4 ">
     <input type="checkbox" /> 
     <div class="collapse-title text-xl font-medium ">
-        {category.name}
+        <p class="font-extrabold text-xl">{category.name}</p>
+        <p class="font-bold text-sm">{"ID: "+category.id}</p>
     </div>
     <div class="collapse-content"> 
         <div class="gr">
             {#each category.words as word}
             <WordActions {word} />
+            
         {/each}
+        <CategoryActions {category} />
         </div>
     </div>
   </div>

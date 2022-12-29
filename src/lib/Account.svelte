@@ -1,11 +1,9 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import type { AuthSession } from "@supabase/supabase-js";
     import { supabase } from "../supabaseClient";
-    import Avatar from './Avatar.svelte'
-    import Test from './Test.svelte'
+    import ImageUpload from './ImageUpload.svelte'
+    import AudioUpload from './AudioUpload.svelte'
   
-    export let session: AuthSession;
   
     let loading = false
     let username: string | null = null
@@ -57,8 +55,8 @@
       
     </div>
     
-    <Avatar bind:url="{avatarUrl}"  />
-    <Test bind:url="{avatarUrl2}" />
+    <ImageUpload bind:url="{avatarUrl}"  />
+    <AudioUpload bind:url="{avatarUrl2}" />
 
     <div class="container m-6">
       <div>
