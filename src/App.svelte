@@ -30,17 +30,6 @@
     browse = false
   }
 
-
-
-  onMount(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      session = data.session
-    })
-
-    supabase.auth.onAuthStateChange((_event, _session) => {
-      session = _session
-    })
-  })
 </script>
 
 
@@ -52,17 +41,15 @@
     <button class={`btn mr-4 ${addCat ? "btn-success" : ""}`} on:click={addCatButton}>Add Category</button>
   </div>
   
-  {#if !session}
-  <Auth />
-  {:else}
+  
   {#if browse}
     <Browse />
   {/if}
   {#if add}
-  <Account {session} />
+  <Account />
   {/if}
   {#if addCat}
-  <Category {session} />
+  <Category />
   {/if}
-  {/if}
+
 </div>
